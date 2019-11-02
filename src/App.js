@@ -9,6 +9,9 @@ import './App.css';
 class App extends Component {
   constructor() {
     super()
+    this.state = {
+      error: ''
+    }
   }
 
   async componentDidMount() {
@@ -21,12 +24,13 @@ class App extends Component {
       addCharacters(characterData);
       const locationData = await getLocations();
       addLocations(locationData)
-    } catch {
-
+    } catch(error) {
+      this.setState({error: error})
     }
   }
 
   render() {
+    console.log(this.props)
     return (
       <main>
         <h1>Rick and Morty</h1>
