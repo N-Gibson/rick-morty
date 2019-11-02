@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Nav from './containers/Nav/nav';
 import { getEpisodes, getCharacters, getLocations } from './apiCalls';
-import { addEpisodes, addCharacters, addLocations } from './actions/index';
+import { addEpisodes, addCharacters, addLocations, addCurrentDisplay } from './actions/index';
 import { connect } from 'react-redux';
 import Body from './containers/Body/body';
 import './App.css';
@@ -12,10 +12,11 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const { addEpisodes, addCharacters, addLocations } = this.props;
+    const { addEpisodes, addCharacters, addLocations, addCurrentDisplay, current } = this.props;
     try {
       const episodeData = await getEpisodes();
       addEpisodes(episodeData);
+      addCurrentDisplay(episodeData);
       const characterData = await getCharacters();
       addCharacters(characterData);
       const locationData = await getLocations();
@@ -45,7 +46,8 @@ const mapStateToProps = ({ episodes, characters, locations }) => ({
 const mapDispatchToProps = (dispatch) => ({
   addEpisodes: allEpisodes => dispatch(addEpisodes(allEpisodes)),
   addCharacters: allCharacters => dispatch(addCharacters(allCharacters)),
-  addLocations: allLocations => dispatch(addLocations(allLocations))
+  addLocations: allLocations => dispatch(addLocations(allLocations)),
+  addCurrentDisplay: current => dispatch(addCurrentDisplay(current))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
