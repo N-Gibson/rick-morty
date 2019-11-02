@@ -40,8 +40,6 @@ const Body = ({ episodes, characters, locations }) => {
     />
   })
 
-  console.log(locations)
-
   return (
     <section className='body'>
       <Route exact path='/characters'>
