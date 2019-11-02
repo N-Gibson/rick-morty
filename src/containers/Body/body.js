@@ -1,10 +1,11 @@
 import React from 'react';
 import Character from '../Character/character';
-import Episode from '../Episode/episode'
+import Episode from '../Episode/episode';
+import Location from '../Location/location';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 
-const Body = ({ episodes, characters }) => {
+const Body = ({ episodes, characters, locations }) => {
   const episode = episodes.map(episode => {
     return <Episode 
       name={episode.name}
@@ -30,6 +31,15 @@ const Body = ({ episodes, characters }) => {
     />
   });
 
+  const location = locations.map(location => {
+    return <Location 
+      name={location.name}
+      dimension={location.dimension}
+      type={location.type}
+      key={location.id}
+    />
+  })
+
   return (
     <section className='body'>
       <Route exact path='/characters'>
@@ -38,13 +48,17 @@ const Body = ({ episodes, characters }) => {
       <Route exact path='/episodes'>
         {episode}
       </Route>
+      <Route exact path='/locations'>
+        {location}
+      </Route>
     </section>
   )
 }
 
-const mapPropsToState = ({ episodes, characters }) => ({
+const mapPropsToState = ({ episodes, characters, locations }) => ({
   episodes,
-  characters
+  characters,
+  locations
 })
 
 export default connect(mapPropsToState)(Body)
