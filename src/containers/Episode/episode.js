@@ -1,4 +1,6 @@
 import React from 'react';
+import './episode.scss';
+import { PropTypes } from 'prop-types';
 
 const Episode = ({ name, episode, air_date }) => {
   return (
@@ -11,3 +13,9 @@ const Episode = ({ name, episode, air_date }) => {
 }
 
 export default Episode
+
+Episode.propTypes = {
+  name: PropTypes.string, 
+  episode: PropTypes.string,
+  air_date: PropTypes.string
+}

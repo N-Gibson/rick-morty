@@ -3,7 +3,9 @@ import Character from '../Character/character';
 import Episode from '../Episode/episode';
 import Location from '../Location/location';
 import { Route } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import './body.scss';
+import { PropTypes } from 'prop-types';
 
 const Body = ({ episodes, characters, locations }) => {
   const episode = episodes.map(episode => {
@@ -11,8 +13,6 @@ const Body = ({ episodes, characters, locations }) => {
       name={episode.name}
       episode={episode.episode}
       air_date={episode.air_date}
-      // episode_characters={episode.characters}
-      // characters={characters}
       key={episode.id}
     />
   });
@@ -62,3 +62,9 @@ const mapPropsToState = ({ episodes, characters, locations }) => ({
 })
 
 export default connect(mapPropsToState)(Body)
+
+Body.propTypes = {
+  episodes: PropTypes.array,
+  characters: PropTypes.array,
+  locations: PropTypes.array
+}

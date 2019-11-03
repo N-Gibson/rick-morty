@@ -1,4 +1,6 @@
 import React from 'react';
+import './location.scss';
+import { PropTypes } from 'prop-types';
 
 const Location = ({ name, dimension, type }) => {
   return (
@@ -11,3 +13,9 @@ const Location = ({ name, dimension, type }) => {
 }
 
 export default Location;
+
+Location.propTypes = {
+  name: PropTypes.string,
+  dimension: PropTypes.string,
+  type: PropTypes.string
+}

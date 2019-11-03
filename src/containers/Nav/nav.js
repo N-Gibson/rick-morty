@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addCurrentDisplay, addEpisodes, addCharacters, addLocations } from '../../actions/index';
+import './nav.scss';
 
 class Nav extends Component {
   constructor() {
@@ -13,25 +14,27 @@ class Nav extends Component {
 
   searchContent(content) {
     const { current, addEpisodes, addCharacters, addLocations } = this.props;
-    // console.log(content)
+    const lowerContent = content.toLowerCase();
+
     if(current[0].url.includes('https://rickandmortyapi.com/api/episode/')) {
-      const foundEpisodes = current.filter(episode => episode.name.includes(content))
+      const foundEpisodes = current.filter(episode => episode.name.toLowerCase().includes(lowerContent))
       addEpisodes(foundEpisodes);
     }
 
     if(current[0].url.includes('https://rickandmortyapi.com/api/character/')) {
-      const foundCharacters = current.filter(character => character.name.includes(content))
+      const foundCharacters = current.filter(character => character.name.toLowerCase().includes(lowerContent))
       addCharacters(foundCharacters);
     }
 
     if(current[0].url.includes('https://rickandmortyapi.com/api/location/')) {
-      const foundLocations = current.filter(location => location.name.includes(content))
+      const foundLocations = current.filter(location => location.name.toLowerCase().includes(lowerContent))
       addLocations(foundLocations)
     }
   }
 
   render() {
     const { characters, episodes, locations, addCurrentDisplay } = this.props;
+
     return (
       <nav>
         <Link to='/episodes'>
@@ -40,8 +43,8 @@ class Nav extends Component {
             type='button'
             onClick={() => {
               addCurrentDisplay(episodes)
-            }}
-            >Episodes
+            }}>
+            Episodes
           </button>
         </Link>
         <Link to='/characters'>
@@ -50,8 +53,8 @@ class Nav extends Component {
             type='button'
             onClick={() => {
               addCurrentDisplay(characters)
-            }}
-            >Characters
+            }}>
+            Characters
           </button>
         </Link>
         <Link to='locations'>
@@ -60,8 +63,8 @@ class Nav extends Component {
             type='button'
             onClick={() => {
               addCurrentDisplay(locations)
-            }}
-            >Locations
+            }}>
+            Locations
           </button>
         </Link>
         <div className='search-div'>
@@ -72,13 +75,16 @@ class Nav extends Component {
             placeholder='Search Content' 
             onChange={(e) => {
               this.setState({content: e.target.value})
-            }}></input>
+            }}>
+            </input>
           <button 
+            className='search-button'
             type='button' 
             onClick={() => {
             this.searchContent(this.state.content)
             this.setState({content: ''})
-            }}>Search
+            }}>
+            Search
           </button>
         </div>
       </nav>
