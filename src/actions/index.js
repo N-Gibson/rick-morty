@@ -18,3 +18,10 @@ export const addLocations = locations => {
     locations
   })
 }
+
+export const addCurrentDisplay = current => {
+  return ({
+    type: 'ADD_CURRENT',
+    current
+  })
+}
