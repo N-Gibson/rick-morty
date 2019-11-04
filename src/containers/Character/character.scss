@@ -1,0 +1,23 @@
+.character-card {
+  background-image: url('https://media.giphy.com/media/hsITL773u90X6KprRR/giphy.gif');
+  background-size: auto;
+  border-radius: 5px;
+    &:hover {
+      box-shadow: 0px 0px 10px 2px rgb(140, 244, 46);
+    }
+}
+
+img {
+  width: 100%;
+}
+
+h2 {
+  color: #fff;
+  padding: 0px 10px;
+}
+
+p {
+  color: #fff;
+  padding: 0px 10px;
+  text-align: center
+}
