@@ -2,15 +2,24 @@ import React from 'react';
 import { Nav } from './nav';
 import { addCurrentDisplay, addEpisodes, addCharacters, addLocations } from '../../actions/index';
 import { mapStateToProps, mapDispatchToProps } from './nav';
-import { shallow } from 'enzyme'
+import { shallow } from 'enzyme';
+
 
 describe('Nav', () => {
   const mockSearchContent = jest.fn();
   let wrapper;
   const mockAddCurrentDisplay = jest.fn();
+  const mockEpisodes = [{name: 'Rickshank Rickdemption'}];
+  const mockCharacters = [{name: 'Rick Sanchez'}]
+  const mockLocations = [{name: 'Earth C-137'}]
 
   beforeEach(() => {
-    wrapper = shallow(<Nav addCurrentDisplay={mockAddCurrentDisplay}/>)
+    wrapper = shallow(<Nav 
+      addCurrentDisplay={mockAddCurrentDisplay}
+      episodes={mockEpisodes}
+      characters={mockCharacters}
+      locations={mockLocations}
+      />)
   })
 
   it('should match snapshot', () => {
@@ -37,13 +46,23 @@ describe('Nav', () => {
     expect(mockSearchContent(content)).toEqual(mockResponse);
   });
 
-  it('should be able to update the current display', () => {
-    addCurrentDisplay = jest.fn();
-    const mockEpisodes = [{name: 'Rickshank Rickdemption'}];
-    wrapper.find('button').at(0).simulate('click');
+  it('should be able to update the current display to episodes', () => {
+    wrapper.find('.episodes-nav').simulate('click');
 
-    expect(wrapper.instance().addCurrentDisplay).toHaveBeenCalledWith(mockEpisodes)
-  })
+    expect(mockAddCurrentDisplay).toHaveBeenCalledWith(mockEpisodes);
+  });
+
+  it('should be able to update the current display to characters', () => {
+    wrapper.find('.characters-nav').simulate('click');
+
+    expect(mockAddCurrentDisplay).toHaveBeenCalledWith(mockCharacters);
+  });
+
+  it('should be able to update the current display to locations', () => {
+    wrapper.find('.locations-nav').simulate('click');
+
+    expect (mockAddCurrentDisplay).toHaveBeenCalledWith(mockLocations);
+  });
 });
 
 describe('mapStateToProps', () => {
