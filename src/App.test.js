@@ -2,6 +2,7 @@ import React from 'react';
 import { App } from './App';
 import { shallow } from 'enzyme';
 import { mapStateToProps, mapDispatchToProps } from './App';
+import { getEpisodes, getCharacters, getLocations } from './apiCalls';
 import { addEpisodes, addCharacters, addLocations, addCurrentDisplay } from './actions/index';
 
 describe('App', () => {
@@ -12,6 +13,14 @@ describe('App', () => {
     mockDispatch = jest.fn();
     mappedDispatch = mapDispatchToProps(mockDispatch)
   });
+
+  // it('componentDidMount', () => {
+  //   wrapper.instance();
+
+  //   expect(getEpisodes).toHaveBeenCalled();
+  //   expect(addCharacters).toHaveBeenCalled();
+  //   expect(addLocations).toHaveBeenCalled();
+  // })
 
   it('mapStateToProps', () => {
     const mockState = {
@@ -58,5 +67,5 @@ describe('App', () => {
     mappedDispatch.addCurrentDisplay([{name: 'Earth C-147'}]);
 
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-  })
+  });
 })
