@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import './body.scss';
 import { PropTypes } from 'prop-types';
 
-const Body = ({ episodes, characters, locations }) => {
+export const Body = ({ episodes, characters, locations }) => {
   const episode = episodes.map(episode => {
     return <Episode 
       name={episode.name}
@@ -55,13 +55,13 @@ const Body = ({ episodes, characters, locations }) => {
   )
 }
 
-const mapPropsToState = ({ episodes, characters, locations }) => ({
+export const mapStateToProps = ({ episodes, characters, locations }) => ({
   episodes,
   characters,
   locations
 })
 
-export default connect(mapPropsToState)(Body)
+export default connect(mapStateToProps)(Body)
 
 Body.propTypes = {
   episodes: PropTypes.array,

@@ -1,4 +1,4 @@
-import { episodes } from './current';
+import { episodes } from './episodes';
 
 describe('Episodes Reducer', () => {
   it('should return the initial state', () => {
@@ -9,14 +9,14 @@ describe('Episodes Reducer', () => {
   });
 
   it('should return the episodes', () => {
-    const mockCurrent = ['episodes', 'episodes'];
+    const mockEpisodes = ['episodes', 'episodes'];
     const mockAction = {
       type: 'ADD_EPISODES',
-      mockCurrent
+      episodes: mockEpisodes
     }
 
-    const result = episodes(undefined, mockAction);
+    const result = episodes(mockEpisodes, mockAction);
 
-    expect(result).toEqual(mockCurrent);
+    expect(result).toEqual(mockAction.episodes);
   })
 })
