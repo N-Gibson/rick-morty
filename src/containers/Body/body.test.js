@@ -32,17 +32,5 @@ describe('mapStateToProps', () => {
     const mappedProps = mapStateToProps(mockState);
 
     expect(mappedProps).toEqual(expected);
-  })
-
-  it('episodes', () => {
-
   });
-
-  it('characters', () => {
-
-  });
-
-  it('locations', () => {
-
-  });
-})
+});

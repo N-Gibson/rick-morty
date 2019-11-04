@@ -7,9 +7,10 @@ import { shallow } from 'enzyme'
 describe('Nav', () => {
   const mockSearchContent = jest.fn();
   let wrapper;
+  const mockAddCurrentDisplay = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<Nav />)
+    wrapper = shallow(<Nav addCurrentDisplay={mockAddCurrentDisplay}/>)
   })
 
   it('should match snapshot', () => {
@@ -38,10 +39,10 @@ describe('Nav', () => {
 
   it('should be able to update the current display', () => {
     addCurrentDisplay = jest.fn();
-    const mockEpisodes = [{name: 'Rickshank Rickdemption'}]
+    const mockEpisodes = [{name: 'Rickshank Rickdemption'}];
     wrapper.find('button').at(0).simulate('click');
 
-    expect(addCurrentDisplay).toHaveBeenCalled()
+    expect(wrapper.instance().addCurrentDisplay).toHaveBeenCalledWith(mockEpisodes)
   })
 });
 

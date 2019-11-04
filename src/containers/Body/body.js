@@ -55,13 +55,13 @@ export const Body = ({ episodes, characters, locations }) => {
   )
 }
 
-const mapPropsToState = ({ episodes, characters, locations }) => ({
+export const mapStateToProps = ({ episodes, characters, locations }) => ({
   episodes,
   characters,
   locations
 })
 
-export default connect(mapPropsToState)(Body)
+export default connect(mapStateToProps)(Body)
 
 Body.propTypes = {
   episodes: PropTypes.array,
