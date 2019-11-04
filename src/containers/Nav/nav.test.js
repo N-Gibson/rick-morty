@@ -19,6 +19,7 @@ describe('Nav', () => {
       episodes={mockEpisodes}
       characters={mockCharacters}
       locations={mockLocations}
+      searchContent={mockSearchContent}
       />)
   })
 
@@ -43,7 +44,7 @@ describe('Nav', () => {
       'url': ['url'],
     }]
 
-    expect(mockSearchContent(content)).toEqual(mockResponse);
+    expect(mockSearchContent).toBeCalled();
   });
 
   it('should be able to update the current display to episodes', () => {
