@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addCurrentDisplay, addEpisodes, addCharacters, addLocations } from '../../actions/index';
 import './nav.scss';
 
-class Nav extends Component {
+export class Nav extends Component {
   constructor() {
     super()
     this.state = {
@@ -92,14 +92,14 @@ class Nav extends Component {
   }
 }
 
-const mapStateToProps = ({ characters, episodes, locations, current }) => ({
+export const mapStateToProps = ({ characters, episodes, locations, current }) => ({
   characters,
   episodes,
   locations,
   current
 })
 
-const mapDispatchToProps = ( dispatch ) => ({
+export const mapDispatchToProps = ( dispatch ) => ({
   addCurrentDisplay: current => dispatch(addCurrentDisplay(current)),
   addEpisodes: episodes => dispatch(addEpisodes(episodes)),
   addCharacters: characters => dispatch(addCharacters(characters)),

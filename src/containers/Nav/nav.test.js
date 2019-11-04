@@ -5,13 +5,9 @@ import { shallow } from 'enzyme';
 
 describe('Nav', () => {
   const mockSearchContent = jest.fn();
-  let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Nav />)
-  })
   it('should match snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(<Nav />).toMatchSnapshot();
   })
 
   it('should be able to search content', () => {
@@ -30,7 +26,7 @@ describe('Nav', () => {
       'type': '',
       'url': ['url'],
     }]
-    
+
     expect(mockSearchContent(content)).toEqual(mockResponse);
   })
 })

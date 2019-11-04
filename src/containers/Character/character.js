@@ -6,7 +6,7 @@ const Character = ({ name, status, species, gender, image, location, origin }) =
   return (
     <div className='character-card'>
       <h2>{name}</h2>
-      <img src={image}></img>
+      <img src={image} alt='character'></img>
       <div>
         <p>Species: {species}</p>
         <p>Status: {status}</p>
