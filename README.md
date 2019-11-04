@@ -28,3 +28,5 @@ Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
 
 ### Screenshots
+
+[screencapture-localhost-3000-2019-11-03-21_11_35.pdf](https://github.com/N-Gibson/swapi-trivia/files/3802679/screencapture-localhost-3000-2019-11-03-21_11_35.pdf)
