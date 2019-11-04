@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import './body.scss';
 import { PropTypes } from 'prop-types';
 
-const Body = ({ episodes, characters, locations }) => {
+export const Body = ({ episodes, characters, locations }) => {
   const episode = episodes.map(episode => {
     return <Episode 
       name={episode.name}

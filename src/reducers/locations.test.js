@@ -12,11 +12,11 @@ describe('Locations Reducer', () => {
     const mockLocations = ['locations', 'locations'];
     const mockAction = {
       type: 'ADD_LOCATIONS',
-      mockLocations
+      locations: mockLocations
     }
 
     const result = locations(undefined, mockAction);
 
-    expect(result).toEqual(mockLocations);
+    expect(result).toEqual(mockAction.locations);
   })
 })

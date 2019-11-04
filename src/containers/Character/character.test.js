@@ -3,6 +3,8 @@ import Character from '../Character/character';
 import { shallow } from 'enzyme';
 
 describe('Character', () => {
-  const wrapper = shallow(<Character />);
-  expect(wrapper).toMatchSnapshot();
+  it('should match snapshot', () => {
+    const wrapper = shallow(<Character />);
+    expect(wrapper).toMatchSnapshot();
+  })
 });

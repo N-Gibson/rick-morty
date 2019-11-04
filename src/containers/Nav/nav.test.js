@@ -37,12 +37,34 @@ describe('Nav', () => {
   });
 
   it('should be able to update the current display', () => {
+    addCurrentDisplay = jest.fn();
     const mockEpisodes = [{name: 'Rickshank Rickdemption'}]
     wrapper.find('button').at(0).simulate('click');
 
     expect(addCurrentDisplay).toHaveBeenCalled()
   })
 });
+
+describe('mapStateToProps', () => {
+  const mockState = {
+    content: '',
+    episodes: [],
+    characters: [],
+    locations: [],
+    current: []
+  }
+
+  const expected = {
+    episodes: [],
+    characters: [],
+    locations: [],
+    current: []
+  }
+
+  const mappedProps = mapStateToProps(mockState);
+
+  expect(mappedProps).toEqual(expected);
+})
 
 describe('mapDispatchToProps', () => {
   let mockDispatch, mappedDispatch

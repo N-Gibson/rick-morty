@@ -12,11 +12,11 @@ describe('Current Reducer', () => {
     const mockCurrent = ['current', 'current'];
     const mockAction = {
       type: 'ADD_CURRENT',
-      mockCurrent
+      current: mockCurrent
     }
 
     const result = current(undefined, mockAction);
 
-    expect(result).toEqual(mockCurrent);
+    expect(result).toEqual(mockAction.current);
   })
 })

@@ -12,11 +12,11 @@ describe('Characters Reducer', () => {
     const mockCharacters = ['characters', 'characters'];
     const mockAction = {
       type: 'ADD_CHARACTERS',
-      mockCharacters
+      characters: mockCharacters
     }
 
     const result = characters(undefined, mockAction);
 
-    expect(result).toEqual(mockCharacters);
+    expect(result).toEqual(mockAction.characters);
   })
 })
