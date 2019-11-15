@@ -69,4 +69,3 @@ describe('App', () => {
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 })
-
